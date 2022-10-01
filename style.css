@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    list-style: none;
+ }
+ body{
+    background: linear-gradient(to right, rgb(255, 255, 214), rgb(0, 255, 191));
+ }
+ .header{
+     text-align: center;
+     font-size: 42pt;
+     font-family: 'Kdam Thmor Pro', sans-serif;
+ }
+ .header2{
+     text-align: center;
+     font-size: 24pt;
+     font-family: 'Poppins', sans-serif;
+ }
+ 
+ .link li a{
+    width: 350px;
+    height: 40px;
+    border: solid 3px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    font-size: 20pt;
+    text-decoration:none;
+    color: black;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 10px;
+    background: linear-gradient(to right, rgb(227, 135, 255), rgb(106, 220, 255));
+    font-family: 'Raleway', sans-serif;
+ }
+ .link li a img{
+     width: 10%;
+     float: left;
+     list-style: none;
+     margin-top: 3px;
+     margin-left: 2px;
+     border-radius: 5px;
+ }
+ .link li a:hover{
+     background-color: rgb(223, 221, 213);
+ }
+ .footer{
+     text-align: center;
+     font-size: 14pt;
+     font-family: 'Nunito', sans-serif;
+ }
