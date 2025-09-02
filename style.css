@@ -1,50 +1,72 @@
-*{
-    padding: 0;
-    list-style: none;
- }
- body{
-    background: linear-gradient(to right, rgb(255, 255, 214), rgb(0, 255, 191));
- }
- .header{
-     text-align: center;
-     font-size: 42pt;
-     font-family: 'Kdam Thmor Pro', sans-serif;
- }
- .header2{
-     text-align: center;
-     font-size: 24pt;
-     font-family: 'Poppins', sans-serif;
- }
- 
- .link li a{
-    width: 350px;
-    height: 40px;
-    border: solid 3px;
-    margin-right: auto;
-    margin-left: auto;
-    display: block;
-    font-size: 20pt;
-    text-decoration:none;
-    color: black;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: 10px;
-    background: linear-gradient(to right, rgb(227, 135, 255), rgb(106, 220, 255));
-    font-family: 'Raleway', sans-serif;
- }
- .link li a img{
-     width: 10%;
-     float: left;
-     list-style: none;
-     margin-top: 3px;
-     margin-left: 2px;
-     border-radius: 5px;
- }
- .link li a:hover{
-     background-color: rgb(223, 221, 213);
- }
- .footer{
-     text-align: center;
-     font-size: 14pt;
-     font-family: 'Nunito', sans-serif;
- }
+/* Reset dasar */
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+/* Body background */
+body {
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* ungu → biru */
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Header utama */
+.header {
+  text-align: center;
+  font-size: 42pt;
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  margin-top: 30px;
+  color: #fff;
+}
+
+/* Sub header */
+.header2 {
+  text-align: center;
+  font-size: 24pt;
+  margin: 10px 0 30px;
+  color: #e0e0e0;
+}
+
+/* Daftar link */
+.link {
+  padding: 0;
+  margin: 0;
+}
+
+.link li {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.link li a {
+  width: 350px;
+  height: 50px;
+  line-height: 50px;
+  border: 2px solid #6a11cb;
+  border-radius: 12px;
+  display: block;
+  font-size: 18px;
+  text-decoration: none;
+  color: #6a11cb;
+  background: #fff;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+/* Hover efek */
+.link li a:hover {
+  background: #6a11cb;
+  color: #fff;
+  border-color: #6a11cb;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
