@@ -8,7 +8,7 @@
 
 /* Body background */
 body {
-  background: linear-gradient(to right, #6a11cb, #2575fc); /* ungu → biru */
+  background: linear-gradient(to right, #ff512f, #dd2476); /* oranye → pink */
   font-family: 'Poppins', sans-serif;
   color: #fff;
   min-height: 100vh;
@@ -31,7 +31,7 @@ body {
   text-align: center;
   font-size: 24pt;
   margin: 10px 0 30px;
-  color: #e0e0e0;
+  color: #ffe3e3; /* pink muda */
 }
 
 /* Daftar link */
@@ -49,12 +49,12 @@ body {
   width: 350px;
   height: 50px;
   line-height: 50px;
-  border: 2px solid #6a11cb;
+  border: 2px solid #ff512f;
   border-radius: 12px;
   display: block;
   font-size: 18px;
   text-decoration: none;
-  color: #6a11cb;
+  color: #ff512f;
   background: #fff;
   transition: all 0.3s ease;
   margin: 0 auto;
@@ -64,9 +64,9 @@ body {
 
 /* Hover efek */
 .link li a:hover {
-  background: #6a11cb;
+  background: #ff512f;
   color: #fff;
-  border-color: #6a11cb;
+  border-color: #ff512f;
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
