@@ -16,12 +16,13 @@ body {
   flex-direction: column;
   justify-content: center;
   animation: fadeIn 1s ease-in-out;
+  padding: 20px;
 }
 
 /* Header utama */
 .header {
   text-align: center;
-  font-size: 42pt;
+  font-size: 2.5rem;
   font-family: 'Kdam Thmor Pro', sans-serif;
   margin-top: 30px;
   color: #fff;
@@ -30,7 +31,7 @@ body {
 /* Sub header */
 .header2 {
   text-align: center;
-  font-size: 24pt;
+  font-size: 1.3rem;
   margin: 10px 0 30px;
   color: #ffe3e3;
 }
@@ -49,13 +50,14 @@ body {
 .link li a {
   position: relative;
   overflow: hidden;
-  width: 350px;
+  width: 100%;
+  max-width: 350px; /* di PC/Tablet tidak lebih lebar */
   height: 50px;
   line-height: 50px;
   border: 2px solid #ff512f;
   border-radius: 12px;
   display: block;
-  font-size: 18px;
+  font-size: 1rem;
   text-decoration: none;
   color: #ff512f;
   background: #fff;
@@ -107,4 +109,19 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+  .header {
+    font-size: 2rem;
+  }
+  .header2 {
+    font-size: 1.1rem;
+  }
+  .link li a {
+    height: 45px;
+    line-height: 45px;
+    font-size: 0.9rem;
+  }
 }
