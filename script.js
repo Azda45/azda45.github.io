@@ -1,14 +1,37 @@
-// Set tahun otomatis di footer
+// Auto-update tahun
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Efek tambahan: animasi muncul tombol 1 per 1
-document.addEventListener("DOMContentLoaded", () => {
-  const links = document.querySelectorAll(".link li");
-  links.forEach((li, i) => {
-    li.style.opacity = 0;
-    setTimeout(() => {
-      li.style.transition = "opacity 0.6s ease";
-      li.style.opacity = 1;
-    }, i * 200); // delay tiap link
-  });
+const toggleBtn = document.getElementById("darkModeToggle");
+const body = document.body;
+
+// Restore theme preference
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark");
+  toggleBtn.textContent = "☀️ Light Mode";
+}
+
+// Toggle theme with smooth fade
+toggleBtn.addEventListener("click", () => {
+  body.style.transition = "background 0.6s ease, color 0.6s ease";
+  body.classList.toggle("dark");
+  if (body.classList.contains("dark")) {
+    toggleBtn.textContent = "☀️ Light Mode";
+    localStorage.setItem("theme", "dark");
+  } else {
+    toggleBtn.textContent = "🌙 Dark Mode";
+    localStorage.setItem("theme", "light");
+  }
 });
+
+// Typing animation
+const text = "Welcome to My Personal Page";
+const typingText = document.getElementById("typingText");
+let i = 0;
+function typeWriter() {
+  if (i < text.length) {
+    typingText.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 100);
+  }
+}
+window.onload = typeWriter;

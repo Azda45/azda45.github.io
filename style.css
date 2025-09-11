@@ -1,127 +1,37 @@
-/* Reset dasar */
-* {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  box-sizing: border-box;
-}
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body {font-family: Arial, sans-serif; background: #f5f5f5; color: #333; text-align: center; padding: 20px; transition: background 0.6s ease, color 0.6s ease;}
 
-/* Body background */
-body {
-  background: linear-gradient(to right, #ff512f, #dd2476); /* oranye → pink */
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  animation: fadeIn 1s ease-in-out;
-  padding: 20px;
-}
+.header {margin-bottom: 20px;}
+.header h1 {font-size: 2.5rem; color: #2c3e50;}
+.header .subtitle {font-size: 1rem; font-weight: normal; color: #555;}
+.header h2 {font-size: 1.2rem; color: #777; margin-top: 10px;}
 
-/* Header utama */
-.header {
-  text-align: center;
-  font-size: 2.5rem;
-  font-family: 'Kdam Thmor Pro', sans-serif;
-  margin-top: 30px;
-  color: #fff;
-}
+#darkModeToggle {margin-top: 15px; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer; background: #2c3e50; color: #fff; font-size: 1rem; transition: 0.3s;}
+#darkModeToggle:hover {background: #34495e; box-shadow: 0 0 10px #2c3e50;}
 
-/* Sub header */
-.header2 {
-  text-align: center;
-  font-size: 1.3rem;
-  margin: 10px 0 30px;
-  color: #ffe3e3;
-}
+.linktree {margin: 20px auto; padding: 20px; max-width: 600px; display: flex; flex-direction: column; gap: 15px;}
+.linktree a {position: relative; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #fff; background: #2c3e50; padding: 14px; border-radius: 10px; font-size: 1.1rem; overflow: hidden; transition: transform 0.3s, background 0.3s, box-shadow 0.3s;}
+.linktree a i {margin-right: 10px; font-size: 1.3rem;}
+.linktree a:hover {transform: scale(1.07); background: #34495e; box-shadow: 0 0 20px rgba(52, 152, 219, 0.9);}
 
-/* Daftar link */
-.link {
-  padding: 0;
-  margin: 0;
-}
+/* Shimmer effect */
+.linktree a::before {content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent); transition: 0.5s;}
+.linktree a:hover::before {left: 100%;}
 
-.link li {
-  text-align: center;
-  margin: 15px 0;
-}
+.footer {margin-top: 40px; font-size: 0.9rem; color: #555; transition: color 0.6s ease;}
 
-.link li a {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: 350px; /* di PC/Tablet tidak lebih lebar */
-  height: 50px;
-  line-height: 50px;
-  border: 2px solid #ff512f;
-  border-radius: 12px;
-  display: block;
-  font-size: 1rem;
-  text-decoration: none;
-  color: #ff512f;
-  background: #fff;
-  transition: all 0.3s ease;
-  margin: 0 auto;
-  font-weight: 500;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-  cursor: pointer;
-}
+body.dark {background: #1a252f; color: #e0e0e0;}
+body.dark .header h1 {color: #f1f1f1;}
+body.dark .header h2, body.dark .header .subtitle {color: #aaa;}
+body.dark .linktree a {background: #16a085;}
+body.dark .linktree a:hover {background: #1abc9c; box-shadow: 0 0 20px rgba(26, 188, 156, 0.9);}
+body.dark .footer {color: #bbb;}
 
-/* Hover efek */
-.link li a:hover {
-  background: #ff512f;
-  color: #fff;
-  border-color: #ff512f;
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-}
-
-/* Ripple effect */
-.link li a::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 300%;
-  top: 50%;
-  left: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  transform: translate(-50%, -50%) scale(0);
-  border-radius: 50%;
-  transition: transform 0.5s ease;
-  z-index: 0;
-}
-
-.link li a:active::after {
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform 0s;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  margin: 40px 0 20px;
-  font-size: 14px;
-  color: #fff;
-}
-
-/* Animasi */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Responsif */
+/* Responsive */
 @media (max-width: 600px) {
-  .header {
-    font-size: 2rem;
-  }
-  .header2 {
-    font-size: 1.1rem;
-  }
-  .link li a {
-    height: 45px;
-    line-height: 45px;
-    font-size: 0.9rem;
-  }
+  .header h1 {font-size: 2rem;}
+  .header h2 {font-size: 1rem;}
+  .linktree {padding: 10px; gap: 12px;}
+  .linktree a {font-size: 1rem; padding: 12px;}
+  .linktree a i {font-size: 1.1rem;}
 }
