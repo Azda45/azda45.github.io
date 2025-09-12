@@ -22,7 +22,7 @@
       </head>
       <body>
         <h1>📑 Sitemap</h1>
-        <p>Daftar halaman yang ada di website <strong>achmadzailani.my.id</strong>.</p>
+        <p>List of pages on the website <strong>achmadzailani.my.id</strong>.</p>
         <table>
           <tr>
             <th>URL</th>
