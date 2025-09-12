@@ -7,7 +7,7 @@ const body = document.body;
 // Restore theme preference
 if (localStorage.getItem("theme") === "dark") {
   body.classList.add("dark");
-  toggleBtn.textContent = "☀️ Light Mode";
+  toggleBtn.textContent = `<i class="fa-solid fa-sun"></i> Light Mode`;
 }
 
 // Toggle theme with smooth fade
@@ -15,10 +15,10 @@ toggleBtn.addEventListener("click", () => {
   body.style.transition = "background 0.6s ease, color 0.6s ease";
   body.classList.toggle("dark");
   if (body.classList.contains("dark")) {
-    toggleBtn.textContent = "☀️ Light Mode";
+    toggleBtn.textContent = `<i class="fa-solid fa-sun"></i> Light Mode`;
     localStorage.setItem("theme", "dark");
   } else {
-    toggleBtn.textContent = "🌙 Dark Mode";
+    toggleBtn.textContent = `<i class="fa-sharp fa-solid fa-moon"></i> Dark Mode`;
     localStorage.setItem("theme", "light");
   }
 });
