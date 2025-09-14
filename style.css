@@ -99,12 +99,10 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
   transition: 0.5s;
 }
 
@@ -146,6 +144,27 @@ body.dark .linktree a:hover {
 
 body.dark .footer {
   color: #bbb;
+}
+
+/* Theme icon spin animation */
+@keyframes spin-360 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.theme-icon {
+  display: inline-block;
+  /* ensure transform origin applies */
+  transition: transform 0.3s ease;
+}
+
+.theme-icon.spin {
+  animation: spin-360 0.6s ease-in-out;
 }
 
 /* Responsive */
