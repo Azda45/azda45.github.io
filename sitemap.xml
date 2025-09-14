@@ -7,7 +7,17 @@
     <priority>1.00</priority>
   </url>
   <url>
+    <loc>https://achmadzailani.my.id/id/</loc>
+    <lastmod>2025-09-11</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
     <loc>https://achmadzailani.my.id/#instagram</loc>
+    <lastmod>2025-09-11</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://achmadzailani.my.id/id/#instagram</loc>
     <lastmod>2025-09-11</lastmod>
     <priority>0.80</priority>
   </url>
@@ -17,7 +27,17 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://achmadzailani.my.id/id/#facebook</loc>
+    <lastmod>2025-09-11</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://achmadzailani.my.id/#tiktok</loc>
+    <lastmod>2025-09-11</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://achmadzailani.my.id/id/#tiktok</loc>
     <lastmod>2025-09-11</lastmod>
     <priority>0.80</priority>
   </url>
@@ -27,7 +47,17 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://achmadzailani.my.id/id/#twitter</loc>
+    <lastmod>2025-09-11</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://achmadzailani.my.id/#github</loc>
+    <lastmod>2025-09-11</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://achmadzailani.my.id/id/#github</loc>
     <lastmod>2025-09-11</lastmod>
     <priority>0.80</priority>
   </url>

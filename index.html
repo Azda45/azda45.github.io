@@ -12,6 +12,12 @@
   <meta name="author" content="Achmad Zailani" />
   <link rel="canonical" href="https://achmadzailani.my.id/" />
 
+  <!-- Hreflang for bilingual support -->
+  <link rel="alternate" href="https://achmadzailani.my.id/" hreflang="en" />
+  <link rel="alternate" href="https://achmadzailani.my.id/id/" hreflang="id" />
+  <!-- x-default points to default language (English) -->
+  <link rel="alternate" href="https://achmadzailani.my.id/" hreflang="x-default" />
+
   <!-- Cloudflare CDN: FontAwesome & Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -24,6 +30,10 @@
 <body>
   <header class="header animate__animated animate__fadeInDown">
     <h1>Azda <span class="subtitle">(Achmad Zailani)</span></h1>
+    <div class="lang-switcher" style="margin-top:8px;">
+      <a href="/" aria-label="English" style="margin-right:8px;">English</a>
+      <a href="/id/" aria-label="Bahasa Indonesia">Indonesia</a>
+    </div>
     <h2 id="typingText"></h2>
     <button id="darkModeToggle"><i class="fa-sharp fa-solid fa-moon"></i> Dark Mode</button>
   </header>
