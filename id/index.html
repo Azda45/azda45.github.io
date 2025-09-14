@@ -29,12 +29,20 @@
 <body>
     <header class="header animate__animated animate__fadeInDown">
         <h1>Azda <span class="subtitle">(Achmad Zailani)</span></h1>
-        <div class="lang-switcher" style="margin-top:8px;">
-            <a href="/" aria-label="English" style="margin-right:8px;">English</a>
-            <a href="/id/" aria-label="Bahasa Indonesia">Indonesia</a>
+        <div class="lang-dropdown" id="langDropdown">
+            <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Pilih bahasa">
+                <i class="fa-solid fa-globe"></i>
+                <span class="lang-label">ID</span>
+                <i class="fa-solid fa-chevron-down chev"></i>
+            </button>
+            <nav class="lang-menu" role="menu" aria-label="Menu bahasa">
+                <a role="menuitem" href="/" data-lang="en"><i class="fi fi-us"></i> English</a>
+                <a role="menuitem" href="/id/" data-lang="id"><i class="fi fi-id"></i> Indonesia</a>
+            </nav>
         </div>
         <h2 id="typingText"></h2>
-        <button id="darkModeToggle"><i class="fa-sharp fa-solid fa-moon"></i> Mode Gelap</button>
+        <button id="darkModeToggle"><i class="fa-sharp fa-solid fa-moon"></i> <span class="dm-label">Mode
+                Gelap</span></button>
     </header>
 
     <main>
