@@ -4,7 +4,11 @@
 const userLang = navigator.language || navigator.userLanguage
 const isRoot =
   window.location.pathname === '/' || window.location.pathname === ''
-if (isRoot && !sessionStorage.getItem('langRedirected')) {
+// Only run redirect logic on root domain, never on /id/ or other subpaths
+if (
+  (window.location.pathname === '/' || window.location.pathname === '') &&
+  !sessionStorage.getItem('langRedirected')
+) {
   // If browser language is Indonesian, redirect to /id
   if (userLang && userLang.toLowerCase().startsWith('id')) {
     sessionStorage.setItem('langRedirected', '1')
