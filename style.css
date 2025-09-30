@@ -8,11 +8,48 @@
 /* Body */
 body {
   font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  color: #333;
+  background: var(--bg);
+  color: var(--text);
   text-align: center;
   padding: 20px;
   transition: background 0.6s ease, color 0.6s ease;
+}
+
+/* Color variables (light and dark theme aware) */
+:root {
+  /* Light theme */
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #111827;
+  /* slate-900 */
+  --muted: #6b7280;
+  /* gray-500 */
+  --primary: #0b84ff;
+  /* blue */
+  --primary-600: #0666d6;
+  --accent: #06b6d4;
+  /* cyan */
+  --shadow: rgba(11, 132, 255, 0.18);
+  --elevation: rgba(0, 0, 0, 0.12);
+  --hover: rgba(0, 0, 0, 0.04);
+  --shimmer: rgba(255, 255, 255, 0.4);
+}
+
+/* Dark theme variables applied when body has .dark */
+body.dark {
+  --bg: #0f1724;
+  /* dark navy */
+  --card: #0b222a;
+  --text: #e6eef2;
+  --muted: #94a3b8;
+  --primary: #06b6d4;
+  /* cyan for buttons in dark */
+  --primary-600: #0891b2;
+  --accent: #06b6d4;
+  --shadow: rgba(6, 182, 212, 0.16);
+  --elevation: rgba(0, 0, 0, 0.6);
+  --hover: rgba(255, 255, 255, 0.03);
+  --shimmer: rgba(255, 255, 255, 0.08);
 }
 
 /* Header */
@@ -29,22 +66,25 @@ body {
 
 .header h1 {
   font-size: 2.5rem;
-  color: #0b2545;
-  /* deep navy for better contrast */
+  color: var(--text);
+  /* use semantic text color */
 }
 
 .header .subtitle {
   font-size: 1rem;
   font-weight: normal;
-  color: #64748b;
-  /* slate gray */
+  color: var(--muted);
+  /* muted */
 }
 
 .header h2 {
   font-size: 1.2rem;
-  color: #777;
+  color: var(--muted);
   margin-top: 10px;
 }
+
+/* Helper: visually hide element only on small screens but keep accessible */
+/* .sr-only-mobile is defined in the responsive media query to hide labels on small screens */
 
 /* Dark Mode Toggle (top-right) */
 #darkModeToggle {
@@ -53,8 +93,7 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background: rgba(11, 132, 255, 0.95);
-  /* primary blue */
+  background: var(--primary);
   color: #fff;
   font-size: 0.95rem;
   transition: 0.2s;
@@ -73,14 +112,13 @@ body {
 }
 
 #darkModeToggle:hover {
-  background: rgba(52, 73, 94, 0.95);
+  background: var(--primary-600);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 /* Dark mode adjustments for the toggle */
 body.dark #darkModeToggle {
-  background: rgba(6, 182, 212, 0.95);
-  /* cyan */
+  background: var(--primary);
 }
 
 /* Linktree */
@@ -100,8 +138,7 @@ body.dark #darkModeToggle {
   justify-content: center;
   text-decoration: none;
   color: #fff;
-  background: #0b84ff;
-  /* primary blue */
+  background: var(--primary);
   padding: 14px;
   border-radius: 10px;
   font-size: 1.1rem;
@@ -116,9 +153,8 @@ body.dark #darkModeToggle {
 
 .linktree a:hover {
   transform: scale(1.05);
-  background: #0666d6;
-  /* darker blue on hover */
-  box-shadow: 0 8px 28px rgba(11, 132, 255, 0.18);
+  background: var(--primary-600);
+  box-shadow: 0 8px 28px var(--shadow);
 }
 
 /* Shimmer effect */
@@ -131,7 +167,7 @@ body.dark #darkModeToggle {
   height: 100%;
   background: linear-gradient(120deg,
       transparent,
-      rgba(255, 255, 255, 0.4),
+      var(--shimmer),
       transparent);
   transition: 0.5s;
 }
@@ -144,38 +180,24 @@ body.dark #darkModeToggle {
 .footer {
   margin-top: 40px;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--muted);
   transition: color 0.6s ease;
 }
 
 /* Dark Mode */
 body.dark {
-  background: #1a252f;
-  color: #e0e0e0;
+  background: var(--bg);
+  color: var(--text);
 }
 
-body.dark .header h1 {
-  color: #f1f1f1;
-}
+/* other elements inherit from variables in dark mode */
 
-body.dark .header h2,
-body.dark .header .subtitle {
-  color: #aaa;
-}
-
-body.dark .linktree a {
-  background: #06b6d4;
-  /* cyan for dark mode */
-}
-
-body.dark .linktree a:hover {
-  background: #0891b2;
-  box-shadow: 0 8px 28px rgba(6, 182, 212, 0.16);
-}
-
+/* Footer color uses muted */
 body.dark .footer {
-  color: #bbb;
+  color: var(--muted);
 }
+
+/* Linktree in dark mode uses variables (no extra rules needed) */
 
 /* Theme icon spin animation */
 @keyframes spin-360 {
@@ -211,7 +233,7 @@ body.dark .footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(11, 132, 255, 0.95);
+  background: var(--primary);
   /* match primary */
   color: #fff;
   border: none;
@@ -233,8 +255,8 @@ body.dark .footer {
 .lang-dropdown .lang-menu {
   display: none;
   margin-top: 6px;
-  background: #fff;
-  color: #333;
+  background: var(--card);
+  color: var(--text);
   border-radius: 8px;
   overflow: hidden;
   min-width: 140px;
@@ -255,22 +277,22 @@ body.dark .footer {
 }
 
 .lang-dropdown .lang-menu a:hover {
-  background: #f2f2f2;
+  background: var(--hover);
 }
 
 /* Dark mode adjustments for the dropdown */
 body.dark .lang-dropdown .lang-btn {
-  background: rgba(6, 182, 212, 0.95);
+  background: var(--primary);
   /* cyan in dark mode */
 }
 
 body.dark .lang-dropdown .lang-menu {
-  background: #0f2a33;
-  color: #e6fbff;
+  background: var(--card);
+  color: var(--text);
 }
 
 body.dark .lang-dropdown .lang-menu a:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--hover);
 }
 
 /* Responsive */
@@ -299,9 +321,17 @@ body.dark .lang-dropdown .lang-menu a:hover {
     padding-top: 56px;
   }
 
-  /* Hide dark mode label on small screens to save space */
-  .dm-label {
-    display: none;
+  /* Visually hide labels on small screens but keep accessible for screen readers */
+  .sr-only-mobile {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
   }
 
   /* Reduce lang-label spacing on small screens */

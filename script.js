@@ -1,4 +1,15 @@
 // Auto-update tahun
+
+const userLang = navigator.language || navigator.userLanguage
+
+if (userLang.startsWith('id')) {
+  // Browser setting pakai Bahasa Indonesia
+  window.location.href = 'https://achmadzailani.my.id/id'
+} else {
+  // Default ke English
+  window.location.href = 'https://achmadzailani.my.id/'
+}
+
 const yearEl = document.getElementById('year')
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear()
@@ -43,7 +54,7 @@ const STRINGS = {
 // Restore theme preference
 if (toggleBtn && localStorage.getItem('theme') === 'dark') {
   body.classList.add('dark')
-  toggleBtn.innerHTML = `<i class="fa-solid fa-sun theme-icon"></i> <span class="dm-label">${STRINGS[lang].light}</span>`
+  toggleBtn.innerHTML = `<i class="fa-solid fa-sun theme-icon"></i> <span class="dm-label sr-only-mobile">${STRINGS[lang].light}</span>`
 }
 
 if (toggleBtn) {
@@ -52,13 +63,13 @@ if (toggleBtn) {
     body.classList.toggle('dark')
     // Update icon and animate it
     if (body.classList.contains('dark')) {
-      toggleBtn.innerHTML = `<i class="fa-solid fa-sun theme-icon"></i> <span class="dm-label">${STRINGS[lang].light}</span>`
+      toggleBtn.innerHTML = `<i class="fa-solid fa-sun theme-icon"></i> <span class="dm-label sr-only-mobile">${STRINGS[lang].light}</span>`
       // animate the new icon
       const icon = toggleBtn.querySelector('.theme-icon')
       animateThemeIcon(icon)
       localStorage.setItem('theme', 'dark')
     } else {
-      toggleBtn.innerHTML = `<i class="fa-sharp fa-solid fa-moon theme-icon"></i> <span class="dm-label">${STRINGS[lang].dark}</span>`
+      toggleBtn.innerHTML = `<i class="fa-sharp fa-solid fa-moon theme-icon"></i> <span class="dm-label sr-only-mobile">${STRINGS[lang].dark}</span>`
       const icon = toggleBtn.querySelector('.theme-icon')
       animateThemeIcon(icon)
       localStorage.setItem('theme', 'light')
