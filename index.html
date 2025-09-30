@@ -3,74 +3,47 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Azda | Achmad Zailani</title>
   <meta name="description"
-    content="Personal website of Achmad Zailani, also known as Azda. Explore my social links, projects, and online presence." />
+    content="Personal website of Achmad Zailani (Azda). Explore my social links, projects, and online presence." />
   <meta name="author" content="Achmad Zailani" />
   <link rel="canonical" href="https://achmadzailani.my.id/" />
 
-  <!-- Hreflang for bilingual support -->
+  <!-- Hreflang SEO -->
   <link rel="alternate" href="https://achmadzailani.my.id/" hreflang="en" />
   <link rel="alternate" href="https://achmadzailani.my.id/id/" hreflang="id" />
-  <!-- x-default points to default language (English) -->
   <link rel="alternate" href="https://achmadzailani.my.id/" hreflang="x-default" />
 
-  <!-- Cloudflare CDN: FontAwesome & Animate.css (load non-blocking) -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="preconnect" href="https://achmadzailani.my.id">
-  <!-- Preload FontAwesome CSS then swap to stylesheet to avoid render-blocking -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style"
-    onload="this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  </noscript>
-  <!-- Preload the FontAwesome font files (woff2) to reduce font load delay -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-solid-900.woff2"
-    as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-brands-400.woff2"
-    as="font" type="font/woff2" crossorigin>
-  <!-- Load Animate.css non-blocking too -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style"
-    onload="this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  </noscript>
-
-  <!-- External CSS -->
-  <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="style.css">
-  </noscript>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PCVK292J');</script>
-  <!-- End Google Tag Manager -->
+  <!-- CSS & Fonts -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 
 <body>
   <header class="header animate__animated animate__fadeInDown">
-    <h1>Azda <span class="subtitle">(Achmad Zailani)</span></h1>
+    <h1 id="title">Azda <span class="subtitle">(Achmad Zailani)</span></h1>
+
+    <!-- Language dropdown -->
     <div class="lang-dropdown" id="langDropdown">
-      <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Choose language"
-        title="Choose language">
-        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+      <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+        <i class="fa-solid fa-globe"></i>
         <span class="lang-label">EN</span>
-        <i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i>
+        <i class="fa-solid fa-chevron-down chev"></i>
       </button>
-      <nav class="lang-menu" role="menu" aria-label="Language menu">
+      <nav class="lang-menu" role="menu">
         <a role="menuitem" href="/" data-lang="en"><i class="fi fi-us"></i> English</a>
         <a role="menuitem" href="/id/" data-lang="id"><i class="fi fi-id"></i> Indonesia</a>
       </nav>
     </div>
+
     <h2 id="typingText"></h2>
+
+    <!-- Dark Mode Toggle -->
     <button id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-      <i class="fa-sharp fa-solid fa-moon" aria-hidden="true"></i>
+      <i class="fa-sharp fa-solid fa-moon"></i>
       <span class="dm-label sr-only-mobile">Dark Mode</span>
     </button>
   </header>
@@ -89,15 +62,11 @@
   </main>
 
   <footer class="footer animate__animated animate__fadeInUp animate__delay-1s">
-    <p>&copy; <span id="year"></span> Azda (Achmad Zailani). All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Azda (Achmad Zailani). <span id="footerText"></span></p>
   </footer>
 
-  <!-- External JS -->
+  <!-- JS -->
   <script src="script.js"></script>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCVK292J"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 </body>
 
 </html>

@@ -1,38 +1,43 @@
-// ========================
-// Auto Redirect (safe)
-// ========================
-const userLang = (navigator.language || navigator.userLanguage).toLowerCase()
-const path = window.location.pathname
+// Auto-update tahun
 
-// Hindari redirect loop + simpan preferensi
-if (!localStorage.getItem('langSet')) {
-  if (userLang.startsWith('id') && !path.startsWith('/id')) {
-    localStorage.setItem('langSet', 'id')
-    window.location.href = '/id'
-  } else if (!userLang.startsWith('id') && path.startsWith('/id')) {
-    localStorage.setItem('langSet', 'en')
-    window.location.href = '/'
+// Auto-redirect by browser language or location (only on root domain)
+const userLang = navigator.language || navigator.userLanguage
+const isRoot =
+  window.location.pathname === '/' || window.location.pathname === ''
+if (isRoot) {
+  // If browser language is Indonesian, redirect to /id
+  if (userLang && userLang.toLowerCase().startsWith('id')) {
+    window.location.replace('/id/')
+  } else if (navigator.geolocation) {
+    // Try geolocation if allowed
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      const lat = pos.coords.latitude
+      const lon = pos.coords.longitude
+      // Simple bounding box for Indonesia
+      // Indonesia: lat -11 to 6, lon 95 to 141
+      if (lat >= -11 && lat <= 6 && lon >= 95 && lon <= 141) {
+        window.location.replace('/id/')
+      }
+    })
   }
+  // Otherwise, stay at root
 }
 
-// ========================
-// Auto-update Tahun
-// ========================
 const yearEl = document.getElementById('year')
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear()
 }
 
-// ========================
-// Dark Mode Toggle
-// ========================
 const toggleBtn = document.getElementById('darkModeToggle')
 const body = document.body
 
+// Helper to animate the theme icon
 function animateThemeIcon (icon) {
   if (!icon) return
+  // Ensure it has the base class
   icon.classList.add('theme-icon')
-  void icon.offsetWidth // trigger reflow
+  // Trigger reflow to allow re-adding the class reliably
+  void icon.offsetWidth
   icon.classList.add('spin')
   const cleanup = () => {
     icon.classList.remove('spin')
@@ -41,7 +46,8 @@ function animateThemeIcon (icon) {
   icon.addEventListener('animationend', cleanup)
 }
 
-// Tentukan bahasa berdasar path
+// Determine current language (default: en)
+const path = window.location.pathname
 const lang = path.startsWith('/id') ? 'id' : 'en'
 
 // Localized strings
@@ -68,21 +74,23 @@ if (toggleBtn) {
   toggleBtn.addEventListener('click', () => {
     body.style.transition = 'background 0.6s ease, color 0.6s ease'
     body.classList.toggle('dark')
+    // Update icon and animate it
     if (body.classList.contains('dark')) {
       toggleBtn.innerHTML = `<i class="fa-solid fa-sun theme-icon"></i> <span class="dm-label sr-only-mobile">${STRINGS[lang].light}</span>`
-      animateThemeIcon(toggleBtn.querySelector('.theme-icon'))
+      // animate the new icon
+      const icon = toggleBtn.querySelector('.theme-icon')
+      animateThemeIcon(icon)
       localStorage.setItem('theme', 'dark')
     } else {
       toggleBtn.innerHTML = `<i class="fa-sharp fa-solid fa-moon theme-icon"></i> <span class="dm-label sr-only-mobile">${STRINGS[lang].dark}</span>`
-      animateThemeIcon(toggleBtn.querySelector('.theme-icon'))
+      const icon = toggleBtn.querySelector('.theme-icon')
+      animateThemeIcon(icon)
       localStorage.setItem('theme', 'light')
     }
   })
 }
 
-// ========================
-// Typing Animation
-// ========================
+// Typing animation (localized)
 const text = STRINGS[lang].typing
 const typingText = document.getElementById('typingText')
 let i = 0
@@ -98,9 +106,7 @@ window.onload = () => {
   typeWriter()
 }
 
-// ========================
-// Language Dropdown
-// ========================
+// Language dropdown behavior
 ;(function () {
   const dropdown = document.getElementById('langDropdown')
   const btn = document.getElementById('langBtn')
@@ -109,7 +115,8 @@ window.onload = () => {
 
   if (!dropdown || !btn || !menu) return
 
-  // Set initial label
+  // Set initial label based on path
+  const path = window.location.pathname
   if (path.startsWith('/id')) {
     if (label) label.textContent = 'ID'
   } else {
@@ -128,7 +135,8 @@ window.onload = () => {
 
   btn.addEventListener('click', e => {
     e.stopPropagation()
-    dropdown.classList.contains('open') ? closeDropdown() : openDropdown()
+    if (dropdown.classList.contains('open')) closeDropdown()
+    else openDropdown()
   })
 
   // Close when clicking outside
@@ -141,12 +149,12 @@ window.onload = () => {
     if (e.key === 'Escape') closeDropdown()
   })
 
-  // Update label when user selects language
+  // Update label if user selects a language (progressive enhancement)
   menu.querySelectorAll('a[data-lang]').forEach(a => {
     a.addEventListener('click', () => {
       const l = a.getAttribute('data-lang')
       if (label) label.textContent = l.toUpperCase()
-      // dropdown akan tertutup saat navigasi
+      // dropdown will close when navigation happens
     })
   })
 })()
