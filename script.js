@@ -4,9 +4,10 @@
 const userLang = navigator.language || navigator.userLanguage
 const isRoot =
   window.location.pathname === '/' || window.location.pathname === ''
-if (isRoot) {
+if (isRoot && !sessionStorage.getItem('langRedirected')) {
   // If browser language is Indonesian, redirect to /id
   if (userLang && userLang.toLowerCase().startsWith('id')) {
+    sessionStorage.setItem('langRedirected', '1')
     window.location.replace('/id/')
   } else if (navigator.geolocation) {
     // Try geolocation if allowed
@@ -16,6 +17,7 @@ if (isRoot) {
       // Simple bounding box for Indonesia
       // Indonesia: lat -11 to 6, lon 95 to 141
       if (lat >= -11 && lat <= 6 && lon >= 95 && lon <= 141) {
+        sessionStorage.setItem('langRedirected', '1')
         window.location.replace('/id/')
       }
     })
